@@ -1,0 +1,46 @@
+/* Container - Parent element */
+#videosContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-min), 1fr));
+  gap: var(--space-sm);
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: var(--space-2xl);
+}
+
+/* Card - Main component */
+.thumbnail {
+  border-radius: var(--radius-md);
+  width: 100%;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+  aspect-ratio: var(--ratio-video);
+}
+
+.thumbnail:hover {
+  transform: scale(var(--scale-hover));
+}
+
+/* List Item - Wrapper */
+#videosContainer > li {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  position: relative;
+  aspect-ratio: var(--ratio-video);
+}
+
+/* Interactive Elements */
+.delete-btn {
+  position: absolute;
+  top: var(--space-xs);
+  right: var(--space-xs);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
