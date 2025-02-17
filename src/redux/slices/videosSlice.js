@@ -1,10 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchVideos, searchVideos, getVideoById } from '../thunks';
 
 const initialState = {
-  video: [],
-  seletedVideo: {},
+  videos: [],
+  selectedVideo: {},
   searchQuery: '',
   searchResults: [],
+  loading: false,
+  error: null,
 };
 
 const videosSlice = createSlice({
@@ -26,6 +29,45 @@ const videosSlice = createSlice({
     setSearchResult: (state, action) => {
       state.searchResults = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchVideos.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchVideos.fulfilled, (state, action) => {
+        state.loading = false;
+        state.videos = action.payload;
+      })
+      .addCase(fetchVideos.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(searchVideos.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(searchVideos.fulfilled, (state, action) => {
+        state.loading = false;
+        state.searchResults = action.payload;
+      })
+      .addCase(searchVideos.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(getVideoById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getVideoById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.selectedVideo = action.payload;
+      })
+      .addCase(getVideoById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 
