@@ -1,0 +1,46 @@
+:root {
+  /* Color Scale - Primary */
+  --primary-100: #f4f1fe;
+  --primary-200: #e4defe;
+  --primary-300: #7f5af0;
+  --primary-400: #6b4ac7;
+  --primary-500: #563da3;
+
+  /* Color Scale - Neutral */
+  --neutral-100: #fffffe;
+  --neutral-200: #e2e2e2;
+  --neutral-300: #94a1b2;
+  --neutral-400: #7a7a8c;
+  --neutral-500: #6c7183;
+
+  /* Theme Colors */
+  --primary: var(--primary-300);
+  --secondary: #2cb67d;
+  --tertiary: #d4a046;
+
+  /* Background System */
+  --background: #16161a;
+  --surface-1: #242629;
+  --surface-2: #2e3035;
+  --card-background: var(--surface-1);
+
+  /* Text System */
+  --text-primary: var(--neutral-100);
+  --text-secondary: var(--neutral-300);
+  --text-muted: var(--neutral-500);
+
+  /* Interactive Elements */
+  --button-bg: var(--primary);
+  --button-text: var(--neutral-100);
+
+  /* Status */
+  --success: #2cb67d;
+  --success-light: #3dd598;
+  --error: #ff4a4a;
+  --warning: #ffb347;
+  --info: var(--tertiary);
+
+  /* Forms */
+  --input-border: var(--surface-2);
+  --input-focus: var(--primary);
+}
