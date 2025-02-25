@@ -1,16 +1,21 @@
 import React from 'react';
-import { useVideo } from '../../context/VideoContext';
+import { useDispatch } from 'react-redux';
+import { deleteVideo, openPlayer, setSelectedVideo } from '../../redux/slices';
+import './VideoCard.css';
 
-const VideoCard = ({ videoId }) => {
-  const { deleteVideo, openPopup } = useVideo();
+const VideoCard = ({ video }) => {
+  const { id: videoId, thumbnail } = video;
+  const dispatch = useDispatch();
 
   const handleThumbnailClick = () => {
-    openPopup(videoId);
+    dispatch(setSelectedVideo(video));
+    dispatch(openPlayer());
   };
 
   const handleDelete = (event) => {
     event.stopPropagation();
-    deleteVideo(videoId);
+    console.log('Deleting video:', videoId);
+    dispatch(deleteVideo(videoId));
   };
 
   const handleKeyPress = (event) => {
@@ -35,7 +40,7 @@ const VideoCard = ({ videoId }) => {
     >
       <img
         className='thumbnail'
-        src={`https://i3.ytimg.com/vi/${videoId}/sddefault.jpg`}
+        src={thumbnail}
         alt={`Cover image for YouTube video with id ${videoId}`}
       />
       <button

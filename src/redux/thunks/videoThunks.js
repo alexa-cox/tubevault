@@ -29,9 +29,12 @@ const getVideoById = createAsyncThunk(
   'videos/getVideoById',
   async (query, thunkAPI) => {
     try {
+      console.log('Getting video details for ID:', videoId);
       const response = await YoutubeService.getVideoById(query);
+      console.log('Video details response:', response);
       return response;
     } catch (error) {
+      console.log('Error fetching video:', error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

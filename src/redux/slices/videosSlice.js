@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchVideos, searchVideos, getVideoById } from '../thunks';
+import { fetchVideos, getVideoById, searchVideos } from '../thunks';
 
 const initialState = {
   videos: [],
@@ -19,6 +19,10 @@ const videosSlice = createSlice({
     },
     setSelectedVideo: (state, action) => {
       state.selectedVideo = action.payload;
+    },
+    deleteVideo: (state, action) => {
+      const videoId = action.payload;
+      state.videos = state.videos.filter((video) => video.id !== videoId);
     },
     clearVideos: (state) => {
       state.videos = [];
@@ -63,6 +67,10 @@ const videosSlice = createSlice({
       .addCase(getVideoById.fulfilled, (state, action) => {
         state.loading = false;
         state.selectedVideo = action.payload;
+        if (!Array.isArray(state.videos)) {
+          state.videos = [];
+        }
+        state.videos.unshift(action.payload);
       })
       .addCase(getVideoById.rejected, (state, action) => {
         state.loading = false;
@@ -77,5 +85,6 @@ export const {
   clearVideos,
   setSearchQuery,
   setSearchResult,
+  deleteVideo,
 } = videosSlice.actions;
 export const videosReducer = videosSlice.reducer;

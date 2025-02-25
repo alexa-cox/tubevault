@@ -67,3 +67,5 @@ export const YoutubeService = {
     }
   },
 };
+
+window.YoutubeService = YoutubeService;
