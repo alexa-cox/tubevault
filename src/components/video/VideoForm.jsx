@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { useVideo } from '../../context/VideoContext';
+import { useDispatch } from 'react-redux';
+import { getVideoById } from '../../redux/thunks';
+import './VideoForm.css';
 
 const VideoForm = () => {
   const [videoId, setVideoId] = useState('');
-  const { saveVideo } = useVideo();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    saveVideo(videoId);
+    dispatch(getVideoById(videoId));
     setVideoId('');
   };
 
