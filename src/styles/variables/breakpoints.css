@@ -1,0 +1,25 @@
+:root {
+  /* Core Breakpoints */
+  --screen-xs: 320px; /* Small phones */
+  --screen-sm: 480px; /* Large phones */
+  --screen-md: 768px; /* Tablets */
+  --screen-lg: 1024px; /* Laptops/Small Desktop */
+  --screen-xl: 1280px; /* Large Desktop */
+  --screen-2xl: 1536px; /* Extra Large Screens */
+
+  /* Container Max Widths */
+  --container-sm: 440px; /* Small container */
+  --container-md: 720px; /* Medium container */
+  --container-lg: 960px; /* Large container */
+  --container-xl: 1140px; /* Extra large container */
+  --container-2xl: 1320px; /* Maximum width */
+
+  /* Device Orientation */
+  --portrait: portrait;
+  --landscape: landscape;
+
+  /* Common Device Breakouts */
+  --mobile-only: (max-width: 767px);
+  --tablet-up: (min-width: 768px);
+  --desktop-up: (min-width: 1024px);
+}

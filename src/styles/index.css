@@ -1,7 +1,5 @@
-@import './variables.css';
-
-/* Components */
-@import './components/layout.css';
-@import './components/VideoCard.css';
-@import './components/VideoForm.css';
-@import './components/VideoPlayer.css';
+@import './variables/index.css';
+@import './base/index.css';
+@import './components/index.css';
+@import './global/index.css';
+@import './utils/index.css';
