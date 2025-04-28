@@ -1,5 +1,5 @@
 import React from 'react';
-import MainLayout from './layouts/mainLayout';
+import { MainLayout } from './layouts';
 import AppRoutes from './routes';
 
 const App = () => {

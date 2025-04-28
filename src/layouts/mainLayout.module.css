@@ -1,0 +1,11 @@
+.headerContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}

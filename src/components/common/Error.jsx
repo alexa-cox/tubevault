@@ -1,4 +1,6 @@
+import React from 'react';
 import '../../styles/components/Error.css';
+
 const Error = ({ message, onRetry }) => {
   return (
     <div className='error-container'>
