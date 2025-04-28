@@ -1,5 +1,5 @@
 import React from 'react';
-import './VideoPlayer.css';
+import styles from './VideoPlayer.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { openPlayer, closePlayer } from '../../redux/slices';
 
@@ -16,11 +16,12 @@ const VideoPlayer = () => {
     <div
       id='popup'
       onClick={handleClose}
-      className={isPlayerOpen ? 'open' : 'closed'}
+      className={`${styles.popup} ${
+        isPlayerOpen ? styles.open : styles.closed
+      }`}
     >
       <iframe
-        width='560'
-        height='315'
+        className={styles.iframe}
         src={
           selectedVideo
             ? `https://www.youtube.com/embed/${selectedVideo.id}`

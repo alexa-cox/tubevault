@@ -11,16 +11,8 @@
   transform: scale(var(--scale-hover));
 }
 
-/* List Item - Wrapper */
-#videosContainer > li {
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  position: relative;
-  aspect-ratio: var(--ratio-video);
-}
-
 /* Interactive Elements */
-.delete-btn {
+.deleteBtn {
   position: absolute;
   top: var(--space-xs);
   right: var(--space-xs);

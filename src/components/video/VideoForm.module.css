@@ -1,4 +1,4 @@
-label {
+.label {
   display: block;
   margin-bottom: var(--space-xs);
   color: var(--paragraph);
@@ -7,7 +7,7 @@ label {
   line-height: var(--line-height-loose);
 }
 
-input {
+.input {
   padding: var(--space-md) var(--space-sm);
   width: 100%;
   border: none;
@@ -15,7 +15,7 @@ input {
   font-size: var(--font-size-base);
 }
 
-form > button {
+.form > .button {
   margin-top: var(--space-sm);
   padding: var(--space-md);
   border-radius: var(--radius-sm);

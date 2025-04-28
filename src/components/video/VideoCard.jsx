@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteVideo, openPlayer, setSelectedVideo } from '../../redux/slices';
-import './VideoCard.css';
+import styles from './VideoCard.module.css';
 
 const VideoCard = ({ video }) => {
   const { id: videoId, thumbnail } = video;
@@ -39,12 +39,12 @@ const VideoCard = ({ video }) => {
       onKeyDown={handleKeyPress}
     >
       <img
-        className='thumbnail'
+        className={styles.thumbnail}
         src={thumbnail}
         alt={`Cover image for YouTube video with id ${videoId}`}
       />
       <button
-        className='delete-btn'
+        className={styles.deleteBtn}
         aria-label='delete video'
         onClick={handleDelete}
         onKeyDown={handleDeleteKeyPress}

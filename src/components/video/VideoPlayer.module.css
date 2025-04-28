@@ -1,4 +1,4 @@
-#popup {
+.popup {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -12,7 +12,7 @@
   transition: all var(--transition-base);
 }
 
-iframe {
+.iframe {
   width: 100%;
   height: auto;
   max-width: 800px;
@@ -20,12 +20,12 @@ iframe {
   background-color: var(--overlay-bg);
 }
 
-#popup.open {
+.popup.open {
   transform: translateY(0);
   opacity: 1;
 }
 
-#popup.closed {
+.popup.closed {
   transform: translateY(-200vh);
   opacity: 0;
 }
