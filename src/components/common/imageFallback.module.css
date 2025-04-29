@@ -1,0 +1,13 @@
+.fallbackContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-background-secondary);
+  border-radius: 4px;
+}
+
+.fallbackIcon {
+  width: 50%;
+  height: 50%;
+  color: var(--color-text-secondary);
+}
