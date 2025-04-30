@@ -8,6 +8,8 @@ export const ROLES = {
   LINK: 'link',
   MENUITEM: 'menuitem',
   ARTICLE: 'article',
+  ALERT: 'alert',
+  STATUS: 'status',
 };
 
 export const TAB_INDEXES = {

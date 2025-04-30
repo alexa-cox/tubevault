@@ -1,29 +1,30 @@
-import { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { KEYBOARD_KEYS } from '../utils';
+import { ROLES, TAB_INDEXES } from '../utils';
+import { useClickHandler } from './useClickHandler';
+import { useKeyboardHandler } from './useKeyboardHandler';
 
-export const useNavigationHandler = (callback, path = '/') => {
-  const navigate = useNavigate();
+/**
+ * Hook for handling navigation with keyboard accessibility
+ *
+ * @param {Object} options - Navigation options
+ * @param {string} [options.path] - Path to navigate to
+ * @param {Function} [options.callback] - Optional callback to execute instead of navigation
+ * @returns {Object} Object containing handlers and props for navigation
+ * @returns {Function} returns.handleClick - Click event handler
+ * @returns {Function} returns.handleKeyPress - Keyboard event handler
+ * @returns {Object} returns.navigationProps - Props object to spread on interactive elements
+ */
+export function useNavigationHandler({ path, callback }) {
+  const handleClick = useClickHandler(callback, path);
+  const handleKeyPress = useKeyboardHandler(handleClick);
 
-  const handleClick = useCallback(() => {
-    if (callback) {
-      callback();
-    } else {
-      navigate(path);
-    }
-  }, [callback, navigate, path]);
-
-  const handleKeyPress = useCallback(
-    (event) => {
-      if (
-        event.key === KEYBOARD_KEYS.ENTER ||
-        event.key === KEYBOARD_KEYS.SPACE
-      ) {
-        handleClick();
-      }
+  return {
+    handleClick,
+    handleKeyPress,
+    navigationProps: {
+      onClick: handleClick,
+      onKeyDown: handleKeyPress,
+      role: ROLES.BUTTON,
+      tabIndex: TAB_INDEXES.FOCUSABLE,
     },
-    [handleClick]
-  );
-
-  return { handleClick, handleKeyPress };
-};
+  };
+}
