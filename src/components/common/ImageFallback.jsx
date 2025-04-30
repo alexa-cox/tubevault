@@ -1,23 +1,34 @@
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames';
+import { ImageIcon } from './Icons';
+import { CSS_CLASSES } from '../../utils/cssConstants';
 import styles from './imageFallback.module.css';
 
-function ImageFallback({ width, height, className }) {
+/**
+ * Fallback component displayed when an image fails to load
+ *
+ * @param {Object} props - Component props
+ * @param {number} props.width - Width of the fallback container
+ * @param {number} props.height - Height of the fallback container
+ * @param {string} [props.className] - Additional CSS class names
+ * @param {string} [props.altText] - Custom accessibility text
+ * @returns {JSX.Element} Fallback component
+ */
+function ImageFallback({
+  width,
+  height,
+  className,
+  altText = CSS_CLASSES.FALLBACK.DEFAULT_ALT_TEXT,
+}) {
   return (
     <div
       className={classNames(styles.fallbackContainer, className)}
       style={{ width, height }}
       role='img'
-      aria-label='Image failed to load'
+      aria-label={altText}
     >
-      <svg
-        viewBox='0 0 24 24'
-        className={styles.fallbackIcon}
-        fill='currentColor'
-      >
-        <path d='M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z' />
-      </svg>
+      <ImageIcon className={styles.fallbackIcon} />
     </div>
   );
 }
@@ -26,6 +37,7 @@ ImageFallback.propTypes = {
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
   className: PropTypes.string,
+  altText: PropTypes.string,
 };
 
-export default ImageFallback;
+export default React.memo(ImageFallback);
