@@ -1,0 +1,48 @@
+/**
+ * @file Error component styles
+ * @module error.module.css
+ * @see {@link Error.jsx} for component implementation
+ */
+
+/**
+ * Container for error content using CSS Grid
+ * @selector .errorContainer
+ * @supports props.style and props.className customization
+ */
+
+.errorContainer {
+  display: grid;
+  place-items: center;
+  gap: var(--gap-lg);
+  padding: var(--container-padding);
+  min-height: var(--section-padding);
+}
+
+/**
+ * Error message text using design system variables
+ * @selector .errorMessage
+ * @displays props.message content
+ */
+.errorMessage {
+  color: var(--error);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/**
+ * Interactive retry button with hover states
+ * @selector .errorAction
+ * @triggers props.onRetry callback
+ */
+.errorAction {
+  color: var(--button);
+  font-size: var(--font-size-base);
+  transition: color var(--transition-base);
+}
+
+.errorAction:hover {
+  color: var(--button-hover);
+}
