@@ -1,11 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { COPYRIGHT_STATEMENT } from '../../utils';
 import { Logo } from '../common';
 import styles from './nav.module.css';
 
 function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <div className={styles.footerContainer}>
       <div className={styles.footerWrapper}>
@@ -71,7 +70,7 @@ function Footer() {
           </NavLink>
         </div>
         <div className={styles.copyrightWrapper}>
-          <p>© {currentYear} Alexandria Cox. All rights reserved.</p>
+          <p>{COPYRIGHT_STATEMENT}</p>
         </div>
       </div>
     </div>
