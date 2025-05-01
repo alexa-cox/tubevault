@@ -20,8 +20,13 @@
   /* Border Radius */
   --radius-xs: 2px;
   --radius-sm: 4px;
-  --radius-md: 8px;
+  --radius-md: 10px;
   --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
+  --radius-xl: 50px;
+  --radius-full: 100%;
+
+  /* Aspect Ratios */
+  --ratio-video: 16/9;
+  --ratio-square: 1/1;
+  --ratio-card: 3/4;
 }

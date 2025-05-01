@@ -28,7 +28,7 @@
   --line-height-snug: 1.375;
   --line-height-base: 1.5;
   --line-height-relaxed: 1.625;
-  --line-height-loose: 1.89;
+  --line-height-loose: 1.89; /* your 34px/18px */
 
   /* Letter Spacing */
   --letter-spacing-tighter: -0.05em;
