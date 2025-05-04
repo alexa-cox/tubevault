@@ -1,8 +1,8 @@
-import Home from './home';
-import Gallery from './gallery';
-import Profile from './profile';
-import NotFound from './notFound';
-import Login from './auth/login';
-import Register from './auth/register';
+import { default as Home } from './Home/Home';
+import { default as Gallery } from './Gallery';
+import { default as Profile } from './Profile';
+import { default as NotFound } from './NotFound';
+import { default as Login } from './Auth/Login';
+import { default as Register } from './Auth/Register';
 
 export { Home, Gallery, Profile, NotFound, Login, Register };

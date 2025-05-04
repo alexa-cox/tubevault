@@ -102,7 +102,7 @@ function Footer() {
             <ul className={styles.footerLinkList}>
               <li>
                 <a
-                  href='#'
+                  href='https://alexa-cox.github.io/tubevault/'
                   target='_blank'
                   rel='noopener noreferrer'
                   className={styles.footerLink}
@@ -112,7 +112,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href='#'
+                  href='https://github.com/alexa-cox/tubevault'
                   target='_blank'
                   rel='noopener noreferrer'
                   className={styles.footerLink}
