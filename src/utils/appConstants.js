@@ -63,3 +63,31 @@ export const COPYRIGHT_YEAR_DISPLAY =
  * @type {string}
  */
 export const COPYRIGHT_STATEMENT = `© ${COPYRIGHT_YEAR_DISPLAY} ${APP_OWNER}. All rights reserved.`;
+
+/**
+ * Legal disclaimer regarding YouTube and Google trademarks
+ * Used in footer, about pages, and legal documentation
+ * @constant
+ * @type {string}
+ */
+export const DISCLAIMER =
+  'This website is not affiliated with, endorsed by, sponsored by, or officially connected with YouTube LLC or Google LLC. All YouTube names, logos, trademarks, and registered trademarks are the property of their respective owners.';
+
+/**
+ * Array of section IDs for the home page.
+ * These IDs correspond to the HTML element IDs in the Home component
+ * and are used for navigation and intersection observation.
+ * @type {string[]}
+ */
+export const HOME_SECTIONS = [
+  'hero',
+  'features',
+  'how-it-works',
+  'pricing',
+  'faq',
+];
+
+export const APP_URL = 'website.com';
+export const APP_EMAIL = 'alexacox.atc@gmail.com';
+export const LEGAL_EFFECTIVE_DATE = 'May 03, 2025';
+export const APP_STATE = 'Florida';
