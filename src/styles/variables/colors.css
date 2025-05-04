@@ -30,8 +30,8 @@
   /* Text hierarchy */
   --subheadline: #e2e2e2;
   --caption: #7a7a8c;
-  --link: #7f5af0;
-  --link-hover: #936af7;
+  --link: var(--accent);
+  --link-hover: color-mix(in srgb, var(--accent) 5%, transparent);
   --muted: #6c7183;
 
   /* Button States */
