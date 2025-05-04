@@ -18,7 +18,6 @@
 }
 
 .logoWrapper:focus {
-  outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
@@ -34,8 +33,4 @@
   width: 100%;
   object-fit: contain;
   transition: transform var(--transition-fast);
-}
-
-.logo:hover {
-  transform: scale(var(--scale-hover));
 }
