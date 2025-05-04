@@ -1,28 +1,18 @@
 import React from 'react';
-import { PublicNav, Footer } from '../components/navigation';
-import styles from './mainLayout.module.css';
+import { Footer, PublicNav } from '../components/navigation';
+import { Outlet } from 'react-router-dom';
 
-const MainLayout = ({ children }) => {
+const MainLayout = () => {
   return (
     <>
       <header>
-        <div className={styles.headerContainer}>
-          <div className={styles.headerWrapper}>
-            <PublicNav />
-          </div>
-        </div>
+        <PublicNav />
       </header>
-      <div className='mainContainer'>
-        <div className='mainWrapper'>
-          <main>{children}</main>
-        </div>
-      </div>
+      <main>
+        <Outlet />
+      </main>
       <footer>
-        <div className='footerContainer'>
-          <div className='footerWrapper'>
-            <Footer />
-          </div>
-        </div>
+        <Footer />
       </footer>
     </>
   );
