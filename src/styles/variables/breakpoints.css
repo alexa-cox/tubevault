@@ -22,4 +22,7 @@
   --mobile-only: (max-width: 767px);
   --tablet-up: (min-width: 768px);
   --desktop-up: (min-width: 1024px);
+
+  /* Grid */
+  --grid-min: 250px;
 }

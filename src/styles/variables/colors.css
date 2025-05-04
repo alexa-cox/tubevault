@@ -1,4 +1,12 @@
 :root {
+  /* Your theme colors */
+  --background: #16161a;
+  --headline: #fffffe;
+  --paragraph: #94a1b2;
+  --button: #7f5af0;
+  --button-text: #fffffe;
+  --accent: #2cb67d;
+
   /* Color Scale - Primary */
   --primary-100: #f4f1fe;
   --primary-200: #e4defe;
@@ -13,32 +21,31 @@
   --neutral-400: #7a7a8c;
   --neutral-500: #6c7183;
 
-  /* Theme Colors */
-  --primary: var(--primary-300);
-  --secondary: #2cb67d;
-  --tertiary: #d4a046;
-
-  /* Background System */
-  --background: #16161a;
+  /* Background variations */
   --surface-1: #242629;
   --surface-2: #2e3035;
-  --card-background: var(--surface-1);
+  --card-background: #242629;
+  --hover-bg: #2a2b2f;
 
-  /* Text System */
-  --text-primary: var(--neutral-100);
-  --text-secondary: var(--neutral-300);
-  --text-muted: var(--neutral-500);
+  /* Text hierarchy */
+  --subheadline: #e2e2e2;
+  --caption: #7a7a8c;
+  --link: var(--accent);
+  --link-hover: color-mix(in srgb, var(--accent) 5%, transparent);
+  --muted: #6c7183;
 
-  /* Interactive Elements */
-  --button-bg: var(--primary);
-  --button-text: var(--neutral-100);
+  /* Button States */
+  --button-hover: #936af7;
+  --button-active: #6b4ac7;
+  --button-disabled: #4a4a5c;
+  --button-focus: #8d6af7;
 
   /* Status */
   --success: #2cb67d;
   --success-light: #3dd598;
   --error: #ff4a4a;
   --warning: #ffb347;
-  --info: var(--tertiary);
+  --info: #4a9eff;
 
   /* Forms */
   --input-border: var(--surface-2);

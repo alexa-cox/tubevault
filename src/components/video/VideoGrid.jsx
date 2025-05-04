@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchVideos } from '../../redux/thunks';
 import { Error, Loading } from '../common';
 import VideoCard from './VideoCard';
-import './VideoGrid.css';
+import styles from './VideoGrid.module.css';
 
 const VideoGrid = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const VideoGrid = () => {
   }
 
   return (
-    <ul id='videosContainer'>
+    <ul className={styles.videosContainer}>
       {videos.map((video) => (
         <VideoCard
           key={video.id}

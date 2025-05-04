@@ -1,0 +1,16 @@
+.videosContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-min), 1fr));
+  gap: var(--space-sm);
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: var(--space-2xl);
+}
+
+/* List Item - Wrapper */
+.videosContainer > li {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  position: relative;
+  aspect-ratio: var(--ratio-video);
+}
