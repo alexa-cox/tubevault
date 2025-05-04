@@ -1,16 +1,3 @@
-.headerContainer {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--container-padding);
-}
-
-.headerWrapper {
-  display: flex;
-  align-items: center;
-  height: 80px;
-  gap: var(--gap-xl);
-}
-
 @media only screen and (max-width: var(--breakpoint-tablet)) {
   .headerWrapper {
     height: auto;
