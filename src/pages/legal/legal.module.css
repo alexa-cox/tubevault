@@ -1,0 +1,391 @@
+.legalContainer {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: var(--space-xl) var(--space-md);
+  position: relative;
+}
+
+.legalContent {
+  background-color: var(--headline); /* White paper color */
+  border-radius: var(--radius-md);
+  padding: var(--space-xl) 40px; /* Increased horizontal padding for space from perforations */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  color: var(--background); /* Dark text on light background */
+  /* Subtle paper texture */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 100% 24px;
+}
+
+/* Left perforated edge with guide holes */
+.legalContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 20px;
+  background-color: var(--headline);
+  border-right: 1px dashed var(--paragraph);
+  z-index: 1;
+}
+
+/* Guide holes on the left edge */
+.legalContent::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 20px;
+  background-image: radial-gradient(
+    circle,
+    var(--background) 3px,
+    transparent 3px
+  );
+  background-size: 20px 20px;
+  background-position: center;
+  z-index: 2;
+}
+
+/* Right perforated edge */
+.rightEdge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  background-color: var(--headline);
+  border-left: 1px dashed var(--paragraph);
+  z-index: 1;
+}
+
+/* Guide holes on the right edge */
+.rightEdgeHoles {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  background-image: radial-gradient(
+    circle,
+    var(--background) 3px,
+    transparent 3px
+  );
+  background-size: 20px 20px;
+  background-position: center;
+  z-index: 2;
+}
+
+.legalTitle {
+  margin-bottom: var(--space-xl);
+  text-align: center;
+  z-index: 3;
+}
+
+.legalTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background-color: var(--accent);
+}
+
+.legalSection {
+  margin-bottom: var(--space-xl);
+  position: relative;
+  z-index: 3;
+}
+
+.legalSection h2 {
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--paragraph);
+  padding-bottom: var(--space-xs);
+}
+
+.legalSection h3 {
+  text-decoration: underline;
+  margin-bottom: var(--space-md);
+}
+
+.legalSection p {
+  margin-bottom: var(--space-md);
+  line-height: var(--line-height-base);
+  text-align: justify;
+  color: var(--background);
+}
+
+.legalSection ul {
+  margin-left: var(--space-lg);
+  margin-bottom: var(--space-md);
+  list-style-type: square;
+}
+
+.legalSection li {
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-xs);
+  color: var(--background);
+}
+
+/* Lists in the legal document */
+.legalList {
+  margin: var(--space-md) 0;
+  padding-left: var(--space-xl);
+  margin-left: var(--space-lg);
+  margin-bottom: var(--space-md);
+  list-style-type: square;
+}
+
+.legalList li {
+  margin-bottom: var(--space-sm);
+  position: relative;
+  padding-left: var(--space-xs);
+  color: var(--background);
+}
+
+.legalOrderedList {
+  counter-reset: item 0;
+  margin-left: var(--space-xl);
+  margin-bottom: var(--space-md);
+  list-style-type: none; /* Remove default numbering */
+}
+
+.legalOrderedList > li {
+  display: block;
+  margin-bottom: var(--space-xs);
+  position: relative;
+  padding-left: var(--space-xl);
+  color: var(--background);
+}
+
+.legalOrderedList > li:before {
+  content: counter(item) '.';
+  counter-increment: item;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.legalOrderedList ul {
+  list-style-type: square;
+  margin-top: var(--space-xs);
+}
+
+.deleteReasonsList {
+  counter-reset: item 0;
+  margin-left: var(--space-xl);
+  margin-bottom: var(--space-md);
+}
+
+.deleteReasonsList li {
+  display: block;
+  margin-bottom: var(--space-xs);
+  position: relative;
+  padding-left: 2em;
+}
+
+.deleteReasonsList li:before {
+  content: counter(item) '.';
+  counter-increment: item;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.contactInfo {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: var(--space-lg);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-md);
+  border-left: 3px solid var(--accent);
+  font-style: normal;
+  margin: var(--space-md) 0;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+}
+
+.contactInfo p {
+  margin-bottom: var(--space-xs);
+  color: var(--background);
+}
+
+.legalFooter {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px dashed var(--paragraph);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--background);
+  opacity: 0.8;
+  z-index: 3;
+  position: relative;
+}
+
+/* Signature line effect */
+.legalFooter::before {
+  content: '';
+  display: block;
+  width: 200px;
+  height: 1px;
+  background-color: var(--background);
+  margin: var(--space-md) auto;
+}
+
+/* Top and bottom perforated edges */
+.legalContainer::before,
+.legalContainer::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  height: 20px;
+  background-color: var(--headline);
+  z-index: 0;
+}
+
+.legalContainer::before {
+  top: 80px;
+  border-bottom: 1px dashed var(--paragraph);
+}
+
+.legalContainer::after {
+  bottom: 0;
+  border-top: 1px dashed var(--paragraph);
+}
+
+.boldText {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Table styles */
+.tableContainer {
+  margin: var(--space-lg) 0;
+  overflow-x: auto;
+}
+
+.legalTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--headline);
+  color: var(--background);
+  font-size: 0.9em;
+  margin-bottom: var(--space-lg);
+}
+
+.legalTable th,
+.legalTable td {
+  padding: var(--space-sm);
+  text-align: left;
+  border: 1px solid var(--paragraph);
+  border: 1px solid var(--surface-2);
+}
+
+.legalTable th {
+  background-color: rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+}
+
+.legalTable ul {
+  margin: var(--space-xs) 0 var(--space-xs) var(--space-lg);
+  padding: 0;
+}
+
+.legalTable li {
+  margin-bottom: var(--space-xs);
+}
+
+.legalDates {
+  margin-bottom: var(--space-xl);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.optOutLink {
+  display: block;
+  margin: var(--space-md) 0;
+  text-align: center;
+}
+
+.optOutForm {
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-xl);
+}
+
+.formGroup {
+  margin-bottom: var(--space-md);
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: bold;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: var(--space-sm);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: var(--input-focus);
+  outline: none;
+}
+
+.formDisclaimer {
+  margin: var(--space-md) 0;
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+}
+
+.formActions {
+  margin-top: var(--space-lg);
+}
+
+.confirmationMessage {
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--success);
+}
+
+.confirmationMessage h2 {
+  color: var(--success);
+  margin-bottom: var(--space-md);
+}
+
+/* Make tables responsive */
+@media (max-width: 768px) {
+  .legalTable {
+    font-size: 0.8em;
+  }
+  .legalTable th,
+  .legalTable td {
+    padding: var(--space-xs);
+  }
+}
+
+@media (max-width: 768px) {
+  .legalContainer {
+    margin: 40px auto;
+  }
+  .legalContent {
+    padding: var(--space-md) 30px;
+  }
+  .legalTitle {
+    font-size: calc(var(--font-size-xl) * 0.8);
+  }
+  .legalSection h2 {
+    font-size: calc(var(--font-size-lg) * 0.9);
+  }
+}
