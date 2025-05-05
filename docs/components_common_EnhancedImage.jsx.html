@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: components/common/EnhancedImage.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,42 +17,82 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: components/common/EnhancedImage.jsx</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>React + Vite</h1>
-<p>This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.</p>
-<p>Currently, two official plugins are available:</p>
-<ul>
-<li><a href="https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md">@vitejs/plugin-react</a> uses <a href="https://babeljs.io/">Babel</a> for Fast Refresh</li>
-<li><a href="https://github.com/vitejs/vite-plugin-react-swc">@vitejs/plugin-react-swc</a> uses <a href="https://swc.rs/">SWC</a> for Fast Refresh</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types';
+import React from 'react';
+import { useImageLoader } from '../../hooks/useImageLoader';
+import ImageFallback from './ImageFallback';
+
+/**
+ * Enhanced image component with built-in loading and error handling
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.src - Image source URL
+ * @param {string} props.alt - Alt text for the image
+ * @param {number} props.width - Width of the image
+ * @param {number} props.height - Height of the image
+ * @param {string} [props.className] - CSS class for the image
+ * @param {string} [props.fallbackClassName] - CSS class for the fallback component
+ * @param {Function} [props.onLoad] - Callback when image loads successfully
+ * @param {Function} [props.onError] - Callback when image fails to load
+ * @returns {JSX.Element} Image or fallback component
+ */
+function EnhancedImage({
+  src,
+  alt,
+  width,
+  height,
+  className,
+  fallbackClassName,
+  onLoad,
+  onError,
+}) {
+  const { hasError } = useImageLoader(src, { onLoad, onError });
+
+  if (hasError) {
+    return (
+      &lt;ImageFallback
+        width={width}
+        height={height}
+        className={fallbackClassName}
+        altText={alt}
+      />
+    );
+  }
+
+  return (
+    &lt;img
+      src={src}
+      alt={alt}
+      style={{ width, height }}
+      className={className}
+    />
+  );
+}
+
+EnhancedImage.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  className: PropTypes.string,
+  fallbackClassName: PropTypes.string,
+  onLoad: PropTypes.func,
+  onError: PropTypes.func,
+};
+
+export default React.memo(EnhancedImage);
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

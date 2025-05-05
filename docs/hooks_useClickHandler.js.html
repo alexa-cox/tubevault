@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: hooks/useClickHandler.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,42 +17,39 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: hooks/useClickHandler.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>React + Vite</h1>
-<p>This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.</p>
-<p>Currently, two official plugins are available:</p>
-<ul>
-<li><a href="https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md">@vitejs/plugin-react</a> uses <a href="https://babeljs.io/">Babel</a> for Fast Refresh</li>
-<li><a href="https://github.com/vitejs/vite-plugin-react-swc">@vitejs/plugin-react-swc</a> uses <a href="https://swc.rs/">SWC</a> for Fast Refresh</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+/**
+ * Hook for handling click events with optional callback or navigation
+ *
+ * @param {Function} [callback] - Optional callback function to execute on click
+ * @param {string} [path] - Optional path to navigate to if no callback is provided
+ * @returns {Function} Click handler function
+ */
+export function useClickHandler(callback, path) {
+  const navigate = useNavigate();
+
+  return useCallback(() => {
+    if (callback) {
+      callback();
+    } else if (path) {
+      navigate(path);
+    }
+  }, [callback, navigate, path]);
+}
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

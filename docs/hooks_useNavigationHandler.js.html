@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: hooks/useNavigationHandler.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,42 +17,48 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: hooks/useNavigationHandler.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>React + Vite</h1>
-<p>This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.</p>
-<p>Currently, two official plugins are available:</p>
-<ul>
-<li><a href="https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md">@vitejs/plugin-react</a> uses <a href="https://babeljs.io/">Babel</a> for Fast Refresh</li>
-<li><a href="https://github.com/vitejs/vite-plugin-react-swc">@vitejs/plugin-react-swc</a> uses <a href="https://swc.rs/">SWC</a> for Fast Refresh</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { ROLES, TAB_INDEXES } from '../utils/a11y';
+import { useClickHandler } from './useClickHandler';
+import { useKeyboardHandler } from './useKeyboardHandler';
+
+/**
+ * Hook for handling navigation with keyboard accessibility
+ *
+ * @param {Object} options - Navigation options
+ * @param {string} [options.path] - Path to navigate to
+ * @param {Function} [options.callback] - Optional callback to execute instead of navigation
+ * @returns {Object} Object containing handlers and props for navigation
+ * @returns {Function} returns.handleClick - Click event handler
+ * @returns {Function} returns.handleKeyPress - Keyboard event handler
+ * @returns {Object} returns.navigationProps - Props object to spread on interactive elements
+ */
+export function useNavigationHandler({ path, callback }) {
+  const handleClick = useClickHandler(callback, path);
+  const handleKeyPress = useKeyboardHandler(handleClick);
+
+  return {
+    handleClick,
+    handleKeyPress,
+    navigationProps: {
+      onClick: handleClick,
+      onKeyDown: handleKeyPress,
+      role: ROLES.BUTTON,
+      tabIndex: TAB_INDEXES.FOCUSABLE,
+    },
+  };
+}
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

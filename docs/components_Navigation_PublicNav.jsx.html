@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Navigation/PublicNav.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Navigation/PublicNav.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import classNames from 'classnames';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { useSectionObserver } from '../../hooks/useSectionObserver';
+import { HOME_SECTIONS } from '../../utils/appConstants';
+import { scrollToSection } from '../../utils/scrollUtils';
+import Button from '../common/Button';
+import Logo from '../common/Logo';
+import styles from './nav.module.css';
+
+/**
+ * Helper component for section navigation links
+ * @param {Object} props - Component props
+ * @param {string} props.section - Section ID to link to
+ * @param {string} props.label - Display text for the link
+ * @param {string} props.activeSection - Currently active section
+ * @param {Function} [props.onMobileClick] - Optional callback for mobile menu
+ */
+const SectionLink = ({ section, label, activeSection, onMobileClick }) => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  const handleClick = (event) => {
+    event.preventDefault();
+
+    if (isHomePage) {
+      // If on home page, use the existing scrollToSection helper
+      scrollToSection(section);
+    } else {
+      // If on another page, navigate to home with section anchor
+      window.location.href = `/#${section}`;
+    }
+
+    // Call the mobile click handler if provided
+    if (onMobileClick) onMobileClick();
+  };
+
+  return (
+    &lt;a
+      className={classNames(styles.navLink, styles.publicNavLink, {
+        [styles.activeLink]: isHomePage &amp;&amp; activeSection === section,
+      })}
+      href={`#${section}`}
+      onClick={handleClick}
+    >
+      {label}
+    &lt;/a>
+  );
+};
+
+/**
+ * Public navigation component for the landing page
+ * Includes section links and authentication options
+ * Responsive with hamburger menu for mobile
+ */
+const PublicNav = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  const observedSection = useSectionObserver(HOME_SECTIONS);
+  const [activeSection, setActiveSection] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setActiveSection(isHomePage ? observedSection : null);
+  }, [isHomePage, observedSection]);
+
+  // Close menu when window is resized to desktop size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 &amp;&amp; menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [menuOpen]);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
+
+  return (
+    &lt;nav className={classNames(styles.navBar, styles.publicNavBar)}>
+      &lt;div className={styles.navContainer}>
+        &lt;div className={styles.navWrapper}>
+          &lt;Logo />
+
+          {/* Desktop Navigation */}
+          &lt;div className={styles.navLinksWrapper}>
+            &lt;SectionLink
+              section='features'
+              label='Features'
+              activeSection={activeSection}
+            />
+            &lt;SectionLink
+              section='how-it-works'
+              label='How It Works'
+              activeSection={activeSection}
+            />
+            &lt;SectionLink
+              section='pricing'
+              label='Pricing'
+              activeSection={activeSection}
+            />
+            &lt;SectionLink
+              section='faq'
+              label='FAQ'
+              activeSection={activeSection}
+            />
+          &lt;/div>
+
+          &lt;div className={styles.authLinksWrapper}>
+            &lt;NavLink
+              className={classNames(styles.navLink, styles.publicNavLink)}
+              to='/auth/login'
+            >
+              Login
+            &lt;/NavLink>
+            &lt;Button
+              as={NavLink}
+              to='/auth/register'
+              size='small'
+              className={styles.signUpButton}
+            >
+              Sign Up
+            &lt;/Button>
+          &lt;/div>
+
+          {/* Hamburger Menu Button */}
+          &lt;button
+            className={styles.menuButton}
+            onClick={toggleMenu}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            &lt;div
+              className={classNames(styles.hamburger, {
+                [styles.open]: menuOpen,
+              })}
+            >
+              &lt;span>&lt;/span>
+              &lt;span>&lt;/span>
+              &lt;span>&lt;/span>
+            &lt;/div>
+          &lt;/button>
+        &lt;/div>
+      &lt;/div>
+
+      {/* Mobile Menu */}
+      &lt;div
+        className={classNames(styles.mobileMenu, {
+          [styles.mobileMenuOpen]: menuOpen,
+        })}
+      >
+        &lt;SectionLink
+          section='features'
+          label='Features'
+          activeSection={activeSection}
+          onMobileClick={closeMenu}
+        />
+        &lt;SectionLink
+          section='how-it-works'
+          label='How It Works'
+          activeSection={activeSection}
+          onMobileClick={closeMenu}
+        />
+        &lt;SectionLink
+          section='pricing'
+          label='Pricing'
+          activeSection={activeSection}
+          onMobileClick={closeMenu}
+        />
+        &lt;SectionLink
+          section='faq'
+          label='FAQ'
+          activeSection={activeSection}
+          onMobileClick={closeMenu}
+        />
+
+        &lt;div className={styles.authLinksWrapper}>
+          &lt;NavLink
+            className={classNames(styles.navLink, styles.authLink)}
+            to='/auth/login'
+            onClick={closeMenu}
+          >
+            Login
+          &lt;/NavLink>
+          &lt;Button
+            as={NavLink}
+            to='/auth/register'
+            size='medium'
+            className={styles.signUpButton}
+            onClick={closeMenu}
+          >
+            Sign Up
+          &lt;/Button>
+        &lt;/div>
+      &lt;/div>
+    &lt;/nav>
+  );
+};
+
+export default PublicNav;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="loading.module_constants.html">loading.constants</a></li><li><a href="module-Error.html">Error</a></li><li><a href="module-Loading.html">Loading</a></li><li><a href="module-Logo.html">Logo</a></li></ul><h3>Global</h3><ul><li><a href="global.html#APP_NAME">APP_NAME</a></li><li><a href="global.html#APP_OWNER">APP_OWNER</a></li><li><a href="global.html#APP_SHORT_NAME">APP_SHORT_NAME</a></li><li><a href="global.html#APP_START_YEAR">APP_START_YEAR</a></li><li><a href="global.html#APP_VERSION">APP_VERSION</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#COPYRIGHT_STATEMENT">COPYRIGHT_STATEMENT</a></li><li><a href="global.html#COPYRIGHT_YEAR_DISPLAY">COPYRIGHT_YEAR_DISPLAY</a></li><li><a href="global.html#CURRENT_YEAR">CURRENT_YEAR</a></li><li><a href="global.html#DISCLAIMER">DISCLAIMER</a></li><li><a href="global.html#EnhancedImage">EnhancedImage</a></li><li><a href="global.html#GalleryIcon">GalleryIcon</a></li><li><a href="global.html#GitHubIcon">GitHubIcon</a></li><li><a href="global.html#HOME_SECTIONS">HOME_SECTIONS</a></li><li><a href="global.html#HeartEmptyIcon">HeartEmptyIcon</a></li><li><a href="global.html#HeartFilledIcon">HeartFilledIcon</a></li><li><a href="global.html#IconBase">IconBase</a></li><li><a href="global.html#ImageFallback">ImageFallback</a></li><li><a href="global.html#ImageIcon">ImageIcon</a></li><li><a href="global.html#LockIcon">LockIcon</a></li><li><a href="global.html#MediumIcon">MediumIcon</a></li><li><a href="global.html#PublicNav">PublicNav</a></li><li><a href="global.html#ScrollRestoration">ScrollRestoration</a></li><li><a href="global.html#SectionLink">SectionLink</a></li><li><a href="global.html#SettingsIcon">SettingsIcon</a></li><li><a href="global.html#UserIcon">UserIcon</a></li><li><a href="global.html#WebsiteIcon">WebsiteIcon</a></li><li><a href="global.html#scrollToSection">scrollToSection</a></li><li><a href="global.html#scrollToTop">scrollToTop</a></li><li><a href="global.html#useClickHandler">useClickHandler</a></li><li><a href="global.html#useImageLoader">useImageLoader</a></li><li><a href="global.html#useKeyboardHandler">useKeyboardHandler</a></li><li><a href="global.html#useNavigationHandler">useNavigationHandler</a></li><li><a href="global.html#useSectionObserver">useSectionObserver</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon May 05 2025 09:55:13 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
