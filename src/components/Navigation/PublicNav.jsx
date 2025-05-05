@@ -18,7 +18,6 @@ import styles from './nav.module.css';
  */
 const SectionLink = ({ section, label, activeSection, onMobileClick }) => {
   const location = useLocation();
-  const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
 
   const handleClick = (event) => {
@@ -57,8 +56,13 @@ const SectionLink = ({ section, label, activeSection, onMobileClick }) => {
 const PublicNav = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-  const activeSection = isHomePage ? useSectionObserver(HOME_SECTIONS) : null;
+  const observedSection = useSectionObserver(HOME_SECTIONS);
+  const [activeSection, setActiveSection] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setActiveSection(isHomePage ? observedSection : null);
+  }, [isHomePage, observedSection]);
 
   // Close menu when window is resized to desktop size
   useEffect(() => {
