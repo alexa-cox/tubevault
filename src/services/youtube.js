@@ -1,4 +1,5 @@
-import { client, ENDPOINTS } from './api';
+import { client } from './api/client';
+import { ENDPOINTS } from './api/config';
 
 export const YoutubeService = {
   // Search videos

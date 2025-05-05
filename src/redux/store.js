@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { videosReducer } from './slices';
-import { uiReducer } from './slices';
-import { playerReducer } from './slices';
+import { playerReducer } from './slices/playerSlice';
+import { uiReducer } from './slices/uiSlice';
+import { videosReducer } from './slices/videosSlice';
 
 const Store = configureStore({
   reducer: {

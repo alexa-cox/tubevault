@@ -1,9 +1,11 @@
 import classNames from 'classnames';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useSectionObserver } from '../../hooks';
-import { HOME_SECTIONS, scrollToSection } from '../../utils';
-import { Button, Logo } from '../common';
+import { HOME_SECTIONS } from '../../utils/appConstants';
+import { scrollToSection } from '../../utils/scrollUtils';
+import Button from '../common/Button';
+import Logo from '../common/Logo';
 import styles from './nav.module.css';
 
 /**

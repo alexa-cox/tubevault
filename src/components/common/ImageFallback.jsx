@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ImageIcon } from './Icons';
 import { CSS_CLASSES } from '../../utils/cssConstants';
+import { ImageIcon } from './Icons';
 import styles from './imageFallback.module.css';
 
 /**

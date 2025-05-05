@@ -1,4 +1,4 @@
-import { ROLES, TAB_INDEXES } from '../utils';
+import { ROLES, TAB_INDEXES } from '../utils/a11y';
 import { useClickHandler } from './useClickHandler';
 import { useKeyboardHandler } from './useKeyboardHandler';
 

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { YoutubeService } from '../../services';
+import { YoutubeService } from '../../services/youtube';
 
 const fetchVideos = createAsyncThunk(
   'videos/fetchVideos',

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getVideoById } from '../../redux/thunks';
+import { getVideoById } from '../../redux/thunks/videoThunks';
 import styles from './VideoForm.module.css';
 
 const VideoForm = () => {

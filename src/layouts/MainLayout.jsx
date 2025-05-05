@@ -1,5 +1,6 @@
 import React from 'react';
-import { Footer, PublicNav } from '../components/navigation';
+import Footer from '../components/Navigation/Footer';
+import PublicNav from '../components/Navigation/PublicNav';
 import { Outlet } from 'react-router-dom';
 
 const MainLayout = () => {

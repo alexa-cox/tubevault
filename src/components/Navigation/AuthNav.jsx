@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './nav.module.css';
-import { Logo } from '../common';
+import Logo from '../common/Logo';
 
 const PublicNav = () => {
   return (

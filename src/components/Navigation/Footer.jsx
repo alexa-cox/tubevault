@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { COPYRIGHT_STATEMENT, DISCLAIMER } from '../../utils';
-import { Logo } from '../common';
+import { COPYRIGHT_STATEMENT, DISCLAIMER } from '../../utils/appConstants';
+import Logo from '../common/Logo';
 import styles from './nav.module.css';
 
 function Footer() {

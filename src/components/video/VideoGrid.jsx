@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchVideos } from '../../redux/thunks';
-import { Error, Loading } from '../common';
+import { fetchVideos } from '../../redux/thunks/videoThunks';
+import Error from '../common/Error';
+import Loading from '../common/Loading';
 import VideoCard from './VideoCard';
 import styles from './VideoGrid.module.css';
 

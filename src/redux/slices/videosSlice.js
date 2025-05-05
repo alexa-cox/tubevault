@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchVideos, getVideoById, searchVideos } from '../thunks';
+import { fetchVideos, getVideoById, searchVideos } from '../thunks/videoThunks';
 
 const initialState = {
   videos: [],

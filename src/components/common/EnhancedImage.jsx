@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { useImageLoader } from '../../hooks';
+import React from 'react';
+import { useImageLoader } from '../../hooks/useImageLoader';
 import ImageFallback from './ImageFallback';
 
 /**

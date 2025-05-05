@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteVideo } from '../redux/slices';
-import { KEYBOARD_KEYS } from '../utils';
+import { deleteVideo } from '../redux/slices/videosSlice';
+import { KEYBOARD_KEYS } from '../utils/a11y';
 
 export const useDeleteHandler = (videoId) => {
   const dispatch = useDispatch();

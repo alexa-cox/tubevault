@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { closePlayer } from '../../redux/slices';
+import { closePlayer } from '../../redux/slices/playerSlice';
 import styles from './VideoPlayer.module.css';
 
 const VideoPlayer = () => {

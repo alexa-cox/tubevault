@@ -1,8 +1,15 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { MainLayout } from '../layouts';
-import { Home, Login, NotFound, Register } from '../pages';
-import { CCPA, Disclaimer, DoNotSell, Privacy, Terms } from '../pages/legal';
+import { MainLayout } from '../layouts/MainLayout';
+import Login from '../pages/Auth/Login/Login';
+import Register from '../pages/Auth/Register/Register';
+import Home from '../pages/Home/Home';
+import NotFound from '../pages/NotFound/NotFound';
+import CCPA from '../pages/legal/CCPA';
+import Disclaimer from '../pages/legal/Disclaimer';
+import DoNotSell from '../pages/legal/DoNotSell';
+import Privacy from '../pages/legal/Privacy';
+import Terms from '../pages/legal/Terms';
 
 const AppRoutes = () => {
   return (

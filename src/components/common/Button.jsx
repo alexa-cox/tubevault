@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
-import { useClickHandler, useKeyboardHandler } from '../../hooks';
+import useKeyboardHandler from '../../hooks/useKeyboardHandler';
+import useClickHandler from '../../hooks/useClickHandler';
 import { ROLES, TAB_INDEXES } from '../../utils/a11y';
 import styles from './button.module.css';
 

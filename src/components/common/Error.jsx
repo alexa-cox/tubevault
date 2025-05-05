@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
-import { ROLES } from '../../utils';
+import { ROLES } from '../../utils/a11y';
 import styles from './error.module.css';
 
 /**

@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { KEYBOARD_KEYS } from '../utils';
+import { KEYBOARD_KEYS } from '../utils/a11y';
 
 /**
  * Hook for handling keyboard events for accessibility
