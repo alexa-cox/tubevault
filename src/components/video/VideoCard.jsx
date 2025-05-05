@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setSelectedVideo } from '../../redux/slices/videosSlice';
 import { openPlayer } from '../../redux/slices/playerSlice';
-import useDeleteHandler from '../../hooks/useDeleteHandler';
-import useNavigationHandler from '../../hooks/useNavigationHandler';
+import { useDeleteHandler } from '../../hooks/useDeleteHandler';
+import { useNavigationHandler } from '../../hooks/useNavigationHandler';
 import { ROLES, TAB_INDEXES } from '../../utils/a11y';
 import styles from './VideoCard.module.css';
 

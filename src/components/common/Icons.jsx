@@ -1,7 +1,7 @@
 import React from 'react';
 import { ROLES, TAB_INDEXES } from '../../utils/a11y';
-import useClickHandler from '../../hooks/useClickHandler';
-import useKeyboardHandler from '../../hooks/useKeyboardHandler';
+import { useClickHandler } from '../../hooks/useClickHandler';
+import { useKeyboardHandler } from '../../hooks/useKeyboardHandler';
 
 /**
  * Base component for all icons with common props and accessibility features
