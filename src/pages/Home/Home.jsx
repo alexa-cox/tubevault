@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { DISCLAIMER } from '../../utils/appConstants';
 import './home.css';
 
 const Home = () => {

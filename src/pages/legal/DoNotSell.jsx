@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
+import Button from '../../components/common/Button';
 import {
-  APP_NAME,
-  APP_OWNER,
   APP_EMAIL,
+  APP_NAME,
   LEGAL_EFFECTIVE_DATE,
 } from '../../utils/appConstants';
 import styles from './legal.module.css';
-import { Button } from '../../components/common';
 
 function DoNotSell() {
   const [formSubmitted, setFormSubmitted] = useState(false);

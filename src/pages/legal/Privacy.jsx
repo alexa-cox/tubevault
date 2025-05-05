@@ -1,14 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
+  APP_EMAIL,
   APP_NAME,
   APP_OWNER,
-  APP_EMAIL,
   APP_URL,
-  APP_STATE,
   LEGAL_EFFECTIVE_DATE,
 } from '../../utils/appConstants';
 import styles from './legal.module.css';
-import { Link } from 'react-router-dom';
 
 function Privacy() {
   return (
