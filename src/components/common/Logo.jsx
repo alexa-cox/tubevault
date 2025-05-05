@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
-import { useNavigationHandler } from '../../hooks';
+import { useNavigationHandler } from '../../hooks/useNavigationHandler';
 import { scrollToSection } from '../../utils/scrollUtils';
 import { APP_NAME } from '../../utils/appConstants';
 import EnhancedImage from './EnhancedImage';
