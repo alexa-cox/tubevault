@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { useSectionObserver } from '../../hooks';
+import { useSectionObserver } from '../../hooks/useSectionObserver';
 import { HOME_SECTIONS } from '../../utils/appConstants';
 import { scrollToSection } from '../../utils/scrollUtils';
 import Button from '../common/Button';
