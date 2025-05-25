@@ -1,41 +1,41 @@
 {
   "name": "tubevault",
+  "version": "1.0.0",
+  "description": "TubeVault monorepo with centralized documentation",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "license": "GPL-3.0-or-later",
+  "workspaces": [
+    "apps/web",
+    "apps/mobile",
+    "apps/server",
+    "docs",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "docs": "jsdoc -c jsdoc.config.json",
-    "predeploy": "npm run docs",
-    "deploy-docs": "gh-pages -d docs"
-  },
-  "dependencies": {
-    "@reduxjs/toolkit": "^2.5.1",
-    "axios": "^1.7.9",
-    "classnames": "^2.5.1",
-    "mongoose": "^8.10.1",
-    "prop-types": "^15.8.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-redux": "^9.2.0",
-    "react-router-dom": "^6.29.0",
-    "react-toastify": "^11.0.3"
+    "build:docs": "npm run build:jsdoc && npm run build:storybook:web && npm run build:storybook:mobile && npm run build:api-docs && npm run build:docusaurus",
+    "build:jsdoc": "npx jsdoc -c jsdoc.config.js",
+    "build:storybook:web": "cd apps/web && npm run build-storybook",
+    "build:storybook:mobile": "cd apps/mobile && npm run build-storybook",
+    "build:api-docs": "cd apps/server && npm run build-docs",
+    "build:docusaurus": "cd docs && npm run build",
+    "dev:docs": "cd docs && npm run start",
+    "dev:storybook:web": "cd apps/web && npm run storybook",
+    "dev:storybook:mobile": "cd apps/mobile && npm run storybook",
+    "clean:docs": "rm -rf docs/static/jsdoc docs/static/storybook docs/static/api-docs docs/build",
+    "docs:full-rebuild": "npm run clean:docs && npm run build:docs",
+    "install:all": "npm install && npm run install:apps",
+    "install:apps": "cd apps/web && npm install && cd ../mobile && npm install && cd ../server && npm install && cd ../../docs && npm install"
   },
   "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
-    "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.19.0",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.18",
-    "globals": "^15.14.0",
-    "jsdoc": "^4.0.4",
-    "vite": "^6.1.0"
-  }
+    "jsdoc": "^4.0.4"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexa-cox/tubevault"
+  },
+  "author": "Alexandria",
+  "license": "GPL-3.0-only"
 }
