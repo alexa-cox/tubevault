@@ -1,0 +1,50 @@
+.testimonials {
+  padding: 5rem 2rem;
+  background-color: var(--surface-2);
+}
+
+.testimonialTitle h2,
+.testimonialTitle p {
+  color: var(--headline) !important;
+  text-shadow: 0 0 1px black;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonialCard {
+  background-color: var(--card-background);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.testimonialText {
+  font-style: italic;
+  color: var(--paragraph);
+  margin-bottom: var(--space-sm);
+}
+
+.testimonialAuthor {
+  display: flex;
+  color: var(--headline);
+  align-items: center;
+  gap: var(--gap-xs);
+}
+
+.authorImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #777;
+  font-size: 0.8rem;
+}

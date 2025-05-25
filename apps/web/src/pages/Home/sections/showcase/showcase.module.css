@@ -1,0 +1,42 @@
+.showcase {
+  padding: 5rem 2rem;
+  background-color: var(--background);
+}
+
+.showcaseContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  align-items: center;
+}
+
+.showcaseText {
+  flex: 1;
+  min-width: 300px;
+  text-shadow: 0 0 1px black;
+}
+
+.showcaseText h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--headline);
+}
+
+.showcaseText p {
+  color: var(--paragraph);
+  margin-bottom: 2rem;
+}
+
+.showcaseImg {
+  flex: 1;
+  min-width: 300px;
+  background-color: #ddd;
+  border-radius: 10px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #777;
+}

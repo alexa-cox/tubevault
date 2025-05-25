@@ -1,0 +1,6 @@
+@media only screen and (max-width: var(--breakpoint-tablet)) {
+  .headerWrapper {
+    height: auto;
+    padding: var(--space-md) 0;
+  }
+}

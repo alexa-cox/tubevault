@@ -1,0 +1,45 @@
+const swaggerJSDoc = require('swagger-jsdoc');
+const path = require('path');
+
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'TubeVault API',
+      version: '1.0.0',
+      description: 'API documentation for TubeVault application',
+      contact: {
+        name: 'TubeVault Team',
+        email: 'contact@tubevault.com',
+      },
+    },
+    servers: [
+      {
+        url: 'http://localhost:3001',
+        description: 'Development server',
+      },
+      {
+        url: 'https://api.tubevault.com',
+        description: 'Production server',
+      },
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+  },
+  apis: [
+    path.join(__dirname, 'src/routes/*.js'),
+    path.join(__dirname, 'src/models/*.js'),
+    path.join(__dirname, 'src/controllers/*.js'),
+  ],
+};
+
+const specs = swaggerJSDoc(options);
+
+module.exports = specs;

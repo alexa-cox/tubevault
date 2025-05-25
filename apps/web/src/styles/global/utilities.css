@@ -1,0 +1,43 @@
+/*Buttons*/
+.btn-primary {
+  background-color: var(--button);
+  color: var(--button-text);
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: var(--button-hover);
+}
+
+.btn-secondary {
+  background-color: var(--button-text);
+  color: var(--button);
+  border: 1px solid var(--button-text);
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  background-color: var(--neutral-200);
+}
+
+/* Possible Secondary Button values
+
+.ctaButtonSecondary {
+  background-color: var(--button-text);
+  color: var(--button);
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.cta-button-secondary:hover {
+  transform: scale(1.05);
+}
+  */

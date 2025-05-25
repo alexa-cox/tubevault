@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  color: var(--paragraph);
+  line-height: 1.6;
+}

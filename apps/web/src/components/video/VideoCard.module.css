@@ -1,0 +1,28 @@
+/* Card - Main component */
+.thumbnail {
+  border-radius: var(--radius-md);
+  width: 100%;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+  aspect-ratio: var(--ratio-video);
+}
+
+.thumbnail:hover {
+  transform: scale(var(--scale-hover));
+}
+
+/* Interactive Elements */
+.deleteBtn {
+  position: absolute;
+  top: var(--space-xs);
+  right: var(--space-xs);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@tubevault/shared",
+  "version": "1.0.0",
+  "description": "Shared constants and utilities for TubeVault monorepo",
+  "main": "src/constants/index.js",
+  "exports": {
+    ".": "./src/constants/index.js",
+    "./constants": "./src/constants/index.js"
+  },
+  "scripts": {
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [
+    "tubevault",
+    "constants",
+    "shared"
+  ],
+  "author": "Alexa Cox",
+  "license": "GPL-3.0-only"
+}
