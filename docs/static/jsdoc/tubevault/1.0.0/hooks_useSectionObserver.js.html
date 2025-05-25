@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: hooks/useSectionObserver.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: hooks/useSectionObserver.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useEffect, useState } from 'react';
+
+/**
+ * Custom hook that observes sections in the viewport and returns the currently active section.
+ *
+ * @param {string[]} sectionIds - Array of section IDs to observe
+ * @param {Object} options - Configuration options
+ * @param {number} options.threshold - How much of the element needs to be visible (0-1)
+ * @param {string} options.rootMargin - Margin around the root (viewport)
+ * @param {number} options.offsetPx - Additional offset in pixels for header height
+ * @returns {string|null} The ID of the currently active section or null if none
+ */
+export function useSectionObserver(
+  sectionIds = [],
+  { threshold = 0.5, rootMargin = '0px', offsetPx = 80 } = {}
+) {
+  const [activeSection, setActiveSection] = useState(null);
+
+  useEffect(() => {
+    // Skip if no section IDs provided or running in a non-browser environment
+    if (!sectionIds.length || typeof window === 'undefined') {
+      return;
+    }
+
+    // Create observer callback function
+    const observerCallback = (entries) => {
+      // Get all elements being observed
+      const allObservedElements = Array.from(
+        observer.takeRecords().map((record) => record.target.id)
+      );
+
+      // Filter for entries that are intersecting
+      const visibleSections = entries.filter((entry) => entry.isIntersecting);
+
+      // If no sections are visible, set activeSection to null
+      if (!visibleSections.length) {
+        setActiveSection(null);
+        return;
+      }
+
+      // If multiple sections are visible, choose the one with the largest intersection ratio
+      if (visibleSections.length > 1) {
+        const mostVisible = visibleSections.reduce((prev, current) => {
+          return prev.intersectionRatio > current.intersectionRatio
+            ? prev
+            : current;
+        });
+        setActiveSection(mostVisible.target.id);
+      } else {
+        // If only one section is visible, use that one
+        setActiveSection(visibleSections[0].target.id);
+      }
+    };
+
+    // Create the observer with options
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold,
+      rootMargin: `${-offsetPx}px 0px 0px 0px`, // Adjust for header height
+    });
+
+    // Start observing each section
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    // Cleanup function to disconnect observer when component unmounts
+    return () => {
+      observer.disconnect();
+    };
+  }, [sectionIds, threshold, rootMargin, offsetPx]);
+
+  return activeSection;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="loading.module_constants.html">loading.constants</a></li><li><a href="module-Error.html">Error</a></li><li><a href="module-Loading.html">Loading</a></li><li><a href="module-Logo.html">Logo</a></li></ul><h3>Global</h3><ul><li><a href="global.html#APP_NAME">APP_NAME</a></li><li><a href="global.html#APP_OWNER">APP_OWNER</a></li><li><a href="global.html#APP_SHORT_NAME">APP_SHORT_NAME</a></li><li><a href="global.html#APP_START_YEAR">APP_START_YEAR</a></li><li><a href="global.html#APP_VERSION">APP_VERSION</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#COPYRIGHT_STATEMENT">COPYRIGHT_STATEMENT</a></li><li><a href="global.html#COPYRIGHT_YEAR_DISPLAY">COPYRIGHT_YEAR_DISPLAY</a></li><li><a href="global.html#CURRENT_YEAR">CURRENT_YEAR</a></li><li><a href="global.html#DISCLAIMER">DISCLAIMER</a></li><li><a href="global.html#DevicesIcon">DevicesIcon</a></li><li><a href="global.html#DoNotDisturbIcon">DoNotDisturbIcon</a></li><li><a href="global.html#EnhancedImage">EnhancedImage</a></li><li><a href="global.html#GalleryIcon">GalleryIcon</a></li><li><a href="global.html#GitHubIcon">GitHubIcon</a></li><li><a href="global.html#HOME_SECTIONS">HOME_SECTIONS</a></li><li><a href="global.html#HeartEmptyIcon">HeartEmptyIcon</a></li><li><a href="global.html#HeartFilledIcon">HeartFilledIcon</a></li><li><a href="global.html#IconBase">IconBase</a></li><li><a href="global.html#ImageFallback">ImageFallback</a></li><li><a href="global.html#ImageIcon">ImageIcon</a></li><li><a href="global.html#LabelIcon">LabelIcon</a></li><li><a href="global.html#LockIcon">LockIcon</a></li><li><a href="global.html#MediumIcon">MediumIcon</a></li><li><a href="global.html#PublicNav">PublicNav</a></li><li><a href="global.html#ScrollRestoration">ScrollRestoration</a></li><li><a href="global.html#SectionLink">SectionLink</a></li><li><a href="global.html#SettingsIcon">SettingsIcon</a></li><li><a href="global.html#UserIcon">UserIcon</a></li><li><a href="global.html#VideoCollectionIcon">VideoCollectionIcon</a></li><li><a href="global.html#VideoLibraryIcon">VideoLibraryIcon</a></li><li><a href="global.html#WebsiteIcon">WebsiteIcon</a></li><li><a href="global.html#scrollToSection">scrollToSection</a></li><li><a href="global.html#scrollToTop">scrollToTop</a></li><li><a href="global.html#useClickHandler">useClickHandler</a></li><li><a href="global.html#useImageLoader">useImageLoader</a></li><li><a href="global.html#useKeyboardHandler">useKeyboardHandler</a></li><li><a href="global.html#useNavigationHandler">useNavigationHandler</a></li><li><a href="global.html#useSectionObserver">useSectionObserver</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a>
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

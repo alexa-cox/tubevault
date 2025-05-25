@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/common/Button.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/common/Button.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react';
+import { useKeyboardHandler } from '../../hooks/useKeyboardHandler';
+import { useClickHandler } from '../../hooks/useClickHandler';
+import { ROLES, TAB_INDEXES } from '../../utils/a11y';
+import styles from './button.module.css';
+
+/**
+ * Button component that can render as different elements (button, Link, etc.)
+ */
+const Button = forwardRef(function Button(
+  {
+    children,
+    as: Component = 'button',
+    variant = 'primary',
+    size = 'medium',
+    className,
+    disabled = false,
+    isLoading = false,
+    startIcon,
+    endIcon,
+    onClick,
+    ...props
+  },
+  ref
+) {
+  // Use the click handler hook for non-button elements
+  const handleClick = useClickHandler(onClick);
+
+  // Use the keyboard handler hook for non-button elements
+  const handleKeyDown = useKeyboardHandler(handleClick);
+
+  const buttonClasses = classNames(
+    styles.button,
+    styles[variant],
+    styles[size],
+    disabled &amp;&amp; styles.disabled,
+    isLoading &amp;&amp; styles.loading,
+    className
+  );
+
+  // Handle different component types (button, a, Link, etc.)
+  const TagName = Component;
+
+  // Prepare props based on component type
+  const componentProps = { ...props };
+
+  if (TagName === 'button') {
+    // Button element props
+    componentProps.type = props.type || 'button';
+    componentProps.disabled = disabled;
+    componentProps.onClick = onClick;
+  } else {
+    // Non-button element props
+    if (disabled) {
+      componentProps['aria-disabled'] = true;
+      componentProps.tabIndex = TAB_INDEXES.NOT_FOCUSABLE;
+    } else {
+      componentProps.onClick = handleClick;
+      componentProps.onKeyDown = handleKeyDown;
+    }
+
+    // Add role="button" for accessibility if not specified
+    if (!componentProps.role) {
+      componentProps.role = ROLES.BUTTON;
+    }
+  }
+
+  return (
+    &lt;TagName
+      className={buttonClasses}
+      ref={ref}
+      {...componentProps}
+    >
+      {startIcon &amp;&amp; &lt;span className={styles.startIcon}>{startIcon}&lt;/span>}
+      {isLoading ? (
+        &lt;span
+          className={styles.spinner}
+          role={ROLES.STATUS}
+          aria-label='Loading'
+          aria-busy='true'
+        />
+      ) : (
+        children
+      )}
+      {endIcon &amp;&amp; &lt;span className={styles.endIcon}>{endIcon}&lt;/span>}
+    &lt;/TagName>
+  );
+});
+
+Button.propTypes = {
+  /** Button content */
+  children: PropTypes.node.isRequired,
+  /** Component to render as */
+  as: PropTypes.elementType,
+  /** Button variant */
+  variant: PropTypes.oneOf(['primary', 'secondary', 'text', 'link']),
+  /** Button size */
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /** Additional CSS class */
+  className: PropTypes.string,
+  /** Disabled state */
+  disabled: PropTypes.bool,
+  /** Loading state */
+  isLoading: PropTypes.bool,
+  /** Icon to display before text */
+  startIcon: PropTypes.node,
+  /** Icon to display after text */
+  endIcon: PropTypes.node,
+  /** Click handler */
+  onClick: PropTypes.func,
+  /** Button type (when rendered as button) */
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+};
+
+export default Button;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="loading.module_constants.html">loading.constants</a></li><li><a href="module-Error.html">Error</a></li><li><a href="module-Loading.html">Loading</a></li><li><a href="module-Logo.html">Logo</a></li></ul><h3>Global</h3><ul><li><a href="global.html#APP_NAME">APP_NAME</a></li><li><a href="global.html#APP_OWNER">APP_OWNER</a></li><li><a href="global.html#APP_SHORT_NAME">APP_SHORT_NAME</a></li><li><a href="global.html#APP_START_YEAR">APP_START_YEAR</a></li><li><a href="global.html#APP_VERSION">APP_VERSION</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#COPYRIGHT_STATEMENT">COPYRIGHT_STATEMENT</a></li><li><a href="global.html#COPYRIGHT_YEAR_DISPLAY">COPYRIGHT_YEAR_DISPLAY</a></li><li><a href="global.html#CURRENT_YEAR">CURRENT_YEAR</a></li><li><a href="global.html#DISCLAIMER">DISCLAIMER</a></li><li><a href="global.html#DevicesIcon">DevicesIcon</a></li><li><a href="global.html#DoNotDisturbIcon">DoNotDisturbIcon</a></li><li><a href="global.html#EnhancedImage">EnhancedImage</a></li><li><a href="global.html#GalleryIcon">GalleryIcon</a></li><li><a href="global.html#GitHubIcon">GitHubIcon</a></li><li><a href="global.html#HOME_SECTIONS">HOME_SECTIONS</a></li><li><a href="global.html#HeartEmptyIcon">HeartEmptyIcon</a></li><li><a href="global.html#HeartFilledIcon">HeartFilledIcon</a></li><li><a href="global.html#IconBase">IconBase</a></li><li><a href="global.html#ImageFallback">ImageFallback</a></li><li><a href="global.html#ImageIcon">ImageIcon</a></li><li><a href="global.html#LabelIcon">LabelIcon</a></li><li><a href="global.html#LockIcon">LockIcon</a></li><li><a href="global.html#MediumIcon">MediumIcon</a></li><li><a href="global.html#PublicNav">PublicNav</a></li><li><a href="global.html#ScrollRestoration">ScrollRestoration</a></li><li><a href="global.html#SectionLink">SectionLink</a></li><li><a href="global.html#SettingsIcon">SettingsIcon</a></li><li><a href="global.html#UserIcon">UserIcon</a></li><li><a href="global.html#VideoCollectionIcon">VideoCollectionIcon</a></li><li><a href="global.html#VideoLibraryIcon">VideoLibraryIcon</a></li><li><a href="global.html#WebsiteIcon">WebsiteIcon</a></li><li><a href="global.html#scrollToSection">scrollToSection</a></li><li><a href="global.html#scrollToTop">scrollToTop</a></li><li><a href="global.html#useClickHandler">useClickHandler</a></li><li><a href="global.html#useImageLoader">useImageLoader</a></li><li><a href="global.html#useKeyboardHandler">useKeyboardHandler</a></li><li><a href="global.html#useNavigationHandler">useNavigationHandler</a></li><li><a href="global.html#useSectionObserver">useSectionObserver</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a>
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
